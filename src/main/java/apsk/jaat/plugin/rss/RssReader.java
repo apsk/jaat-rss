@@ -16,9 +16,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class RssReader extends DefaultHandler {
-
     public static class Termination extends SAXException {}
-
     Deque<String> path = new LinkedList<>();
     boolean isReadingEntry = false;
     boolean isReadingChars = false;
@@ -27,19 +25,13 @@ public class RssReader extends DefaultHandler {
     StringBuilder curChars;
     int entriesReadLimit;
     Predicate<Map<String,String>> earlyTerminationCondition;
-
-    public RssReader() {
-        this(-1, e -> false);
-    }
-
-    public RssReader(
+    private RssReader(
         int entriesReadLimit,
         Predicate<Map<String,String>> earlyTerminationCondition
     ) {
         this.entriesReadLimit = entriesReadLimit;
         this.earlyTerminationCondition = earlyTerminationCondition;
     }
-
     @Override
     public void startElement(
         String namespaceURI,
@@ -57,7 +49,6 @@ public class RssReader extends DefaultHandler {
             curEntry = new HashMap<>();
         }
     }
-
     @Override
     public void characters(char[] chars, int start, int length) {
         if (isReadingEntry) {
@@ -70,7 +61,6 @@ public class RssReader extends DefaultHandler {
             }
         }
     }
-
     @Override
     public void endElement(
         String uri,
@@ -98,17 +88,8 @@ public class RssReader extends DefaultHandler {
             path.removeLast();
         }
     }
-
-    public Map<String, String> getEntry(int index) {
-        if (index < entries.size()) {
-            return entries.get(index);
-        } else {
-            throw new IndexOutOfBoundsException();
-        }
-    }
-
-    public static RssReader forURL(
-        URL url,
+    public static List<Map<String, String>> readFromURL(
+        String resource,
         int entriesReadLimit,
         Predicate<Map<String,String>> earlyTerminationCondition
     ) throws IOException, ParserConfigurationException, SAXException {
@@ -119,15 +100,8 @@ public class RssReader extends DefaultHandler {
         RssReader rssReader = new RssReader(entriesReadLimit, earlyTerminationCondition);
         xmlReader.setContentHandler(rssReader);
         try {
-            xmlReader.parse(new InputSource(url.openStream()));
-        } catch (Termination e) { /* fine */}
-        return rssReader;
-    }
-
-    public static RssReader forURL(
-        String url,
-        Predicate<Map<String,String>> earlyTerminationCondition
-    ) throws IOException, ParserConfigurationException, SAXException {
-        return forURL(new URL(url), -1, earlyTerminationCondition);
+            xmlReader.parse(new InputSource(new URL(resource).openStream()));
+        } catch (Termination e) { /* fine */ }
+        return rssReader.entries;
     }
 }
