@@ -9,8 +9,12 @@ import org.xml.sax.helpers.DefaultHandler;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
@@ -99,16 +103,14 @@ public class RssReader extends DefaultHandler {
         InputStream inputStream,
         int entriesReadLimit,
         Predicate<Map<String,String>> earlyTerminationCondition
-    ) throws IOException, ParserConfigurationException, SAXException {
+    ) throws Exception {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         saxParserFactory.setNamespaceAware(true);
         SAXParser saxParser = saxParserFactory.newSAXParser();
         XMLReader xmlReader = saxParser.getXMLReader();
         RssReader rssReader = new RssReader(entriesReadLimit, earlyTerminationCondition);
         xmlReader.setContentHandler(rssReader);
-        try {
-            xmlReader.parse(new InputSource(inputStream));
-        } catch (Termination e) { /* fine */ }
+        try { xmlReader.parse(new InputSource(inputStream)); } catch (Termination ignored) {}
         return rssReader.entries;
     }
 
@@ -116,9 +118,22 @@ public class RssReader extends DefaultHandler {
         String resource,
         int entriesReadLimit,
         Predicate<Map<String,String>> earlyTerminationCondition
-    ) throws IOException, ParserConfigurationException, SAXException {
+    ) throws Exception {
         return readFromStream(
             new URL(resource).openStream(),
+            entriesReadLimit,
+            earlyTerminationCondition
+        );
+    }
+
+    public static List<Map<String, String>> readFromGlobalResourceFile(
+        String resourceFileName,
+        int entriesReadLimit,
+        Predicate<Map<String,String>> earlyTerminationCondition
+    ) throws Exception {
+        URI resourceFileURI = RssReader.class.getClassLoader().getResource(resourceFileName).toURI();
+        return RssReader.readFromStream(
+            new FileInputStream(new File(resourceFileURI)),
             entriesReadLimit,
             earlyTerminationCondition
         );
