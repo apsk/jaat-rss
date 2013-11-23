@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule"
+      xmlns:re="http://purl.org/atompub/rank/1.0">
+    <title type="text">active questions tagged java - Stack Overflow</title>
+    <link rel="self" href="http://stackoverflow.com/feeds/tag/java" type="application/atom+xml" />
+    <link rel="alternate" href="http://stackoverflow.com/questions/tagged/?tagnames=java&amp;amp;sort=active" type="text/html" />
+    <subtitle>most recent 30 from stackoverflow.com</subtitle>
+    <updated>2013-11-23T09:32:50Z</updated>
+    <id>http://stackoverflow.com/feeds/tag/java</id>
+    <creativeCommons:license>http://www.creativecommons.org/licenses/by-sa/3.0/rdf</creativeCommons:license>
+    <entry>
+        <id>http://stackoverflow.com/q/20160707</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">Java newbie</title>
+        <category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="java"/>
+        <author>
+            <name>Espryon</name>
+            <uri>http://stackoverflow.com/users/3008894</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/20160707/im-new-to-java-and-this-is-one-of-several-basic-programs-ive-attempted-at-maki" />
+        <published>2013-11-23T09:29:16Z</published>
+        <updated>2013-11-23T09:31:15Z</updated>
+        <summary type="html">
+            Blah-blah-blah...
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/20160706</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">JavaFX white-screen: No content showing in Pane on Run</title>
+        <category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="java"/><category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="javafx"/>
+        <author>
+            <name>Stack Rev</name>
+            <uri>http://stackoverflow.com/users/2837501</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/20160706/javafx-white-screen-no-content-showing-in-pane-on-run" />
+        <published>2013-11-23T09:29:09Z</published>
+        <updated>2013-11-23T09:29:09Z</updated>
+        <summary type="html">
+            &lt;p&gt;I was working just fine on my JavaFX project till I installed netbeans-7.4beta-windows this morning. I then uninstalled it and tried to revert back to netbeans-7.2.1-ml-windows since 7.4beta was showing me code errors I wasn&#39;t getting with 7.2.1.&lt;/p&gt;
+            &lt;p&gt;Now, unfortunately, when I try to run my project, I very sadly get the following pop-up error:&lt;/p&gt;
+            &lt;pre&gt;&lt;code&gt;UnsatisfiedLinkError:
+            com.sun.deploy.config.WinPlatformUserHome()Ljava/lang/String;
+            &lt;/code&gt;&lt;/pre&gt;
+            &lt;p&gt;When I click on &quot;OK&quot; my project window shows, but with nothing but a white window: no borders, just nothing. Not even the text and forms I coded in.&lt;/p&gt;
+            &lt;p&gt;What could be the problem. Will trully appreciate any help.&lt;/p&gt;
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/20160704</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">By using FileAppender how to clear my previous data and write newly data?</title>
+        <category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="java"/><category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="log4j"/>
+        <author>
+            <name>Prabha</name>
+            <uri>http://stackoverflow.com/users/2915589</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/20160704/by-using-fileappender-how-to-clear-my-previous-data-and-write-newly-data" />
+        <published>2013-11-23T09:28:56Z</published>
+        <updated>2013-11-23T09:28:56Z</updated>
+        <summary type="html">
+            &lt;p&gt;public class Client {&lt;/p&gt;
+            &lt;p&gt;static Logger l = Logger.getLogger(Client.class.getName());&lt;/p&gt;
+            &lt;p&gt;public static void main(String[] args) {      &lt;/p&gt;
+            &lt;pre&gt;&lt;code&gt;  Layout l1 = new SimpleLayout();
+            Appender a;
+            try
+            {
+            a = new FileAppender(l1,&quot;my.txt&quot;, false);
+            l.addAppender(a);
+            }
+            catch(Exception e) {}
+            l.fatal(&quot;This is the error message..&quot;);
+            System.out.println(&quot;Your logic executed successfully....&quot;);
+            &lt;/code&gt;&lt;/pre&gt;
+            &lt;p&gt;}
+            }&lt;/p&gt;
+            &lt;p&gt;By using false in FileAppender(l1,&quot;my.txt&quot;, false);
+            I got but if i use log4j.properties file how can I achieve this&lt;/p&gt;
+        </summary>
+    </entry>
+    <entry>
+        <id>http://stackoverflow.com/q/20160441</id>
+        <re:rank scheme="http://stackoverflow.com">0</re:rank>
+        <title type="text">how to read a text file in java by name</title>
+        <category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="java"/><category scheme="http://stackoverflow.com/feeds/tag/java/tags" term="file"/>
+        <author>
+            <name>Tintu James</name>
+            <uri>http://stackoverflow.com/users/1120497</uri>
+        </author>
+        <link rel="alternate" href="http://stackoverflow.com/questions/20160441/how-to-read-a-text-file-in-java-by-name" />
+        <published>2013-11-23T08:54:17Z</published>
+        <updated>2013-11-23T09:28:50Z</updated>
+        <summary type="html">
+            &lt;p&gt;i want to input the file name as file not as file.txt.How to modify this code  &lt;/p&gt;
+            &lt;pre&gt;&lt;code&gt;public static void main (String[] args) throws FileNotFoundException {
+            Scanner sc = new Scanner(System.in);
+            System.out.print(&quot;Enter the input file name: &quot;);
+            String newfile = sc.nextLine();
+            }
+            &lt;/code&gt;&lt;/pre&gt;
+        </summary>
+    </entry>
+</feed>
